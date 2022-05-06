@@ -1,0 +1,15 @@
+{
+  "name": "P3",
+  "version": "1.0.0",
+  "description": "Projet 3 du parcours frontend-dévelopeur: https://openclassrooms.com/fr/projects/dynamisez-une-page-web-avec-des-animations-css/assignment",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass index.scss style.css -w expanded"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.51.0"
+  }
+}

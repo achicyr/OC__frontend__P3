@@ -1,0 +1,125 @@
+$colour-primary: green;
+$colour-white: gray;
+$colour-invalid:orange;
+
+$button_palette: (
+    active: (
+        bg: $colour-primary,
+        border: $colour-primary,
+        txt: $colour-white,
+    ),
+    hover: (
+        bg: $colour-primary,
+        border: $colour-white,
+        txt: $colour-white,
+    ),
+    invalid: (
+        bg: $colour-invalid,
+        border: $colour-white,
+        txt: $colour-white,
+    )
+);
+@mixin button_palette($state, $bordervalues: (1rem solid)) {
+    $palette: map-get($button_palette, $state);
+    &:#{$state}{
+        border: nth($bordervalues, 1) nth($bordervalues, 2) map-get($palette, border);
+        background-color: map-get($palette, bg);
+        color: map-get($palette, txt);
+    }
+}
+div.btn{
+    @include button_palette(hover);
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$breakpoints: (
+    mobile: 599px,
+    tablette: 999px,
+    desktop: 1199px
+);
+@mixin mobile-only($max: map-get($breakpoints, mobile)) {
+    @media screen and (max-width: $max){
+        @content;
+    }
+}
+@mixin tablette-only($min: map-get($breakpoints, mobile) + 1, $max: map-get($breakpoints, tablette)) {
+    @media screen and (min-width: $min) and (max-width: $max){
+        @content;
+    }
+}
+
+@mixin desktop-only($min: map-get($breakpoints, tablette) + 1, $max: map-get($breakpoints, desktop)) {
+    @media screen and (min-width: $min ) and (max-width: $max){
+        @content;
+    }
+}
+
+@mixin tv-only($min: map-get($breakpoints, desktop) + 1) {
+    @media screen and (min-width: $min ){
+        @content;
+    }
+}
+
+
+/*****/
+
+@mixin mobile-and-tablette($max: map-get($breakpoints, tablette)) {
+    @media screen and (max-width: $max){
+        @content;
+    }
+}
+
+@mixin tablette-and-desktop($min: map-get($breakpoints, mobile) + 1, $max: map-get($breakpoints, desktop)) {
+    @media screen and (min-width: $min) and (max-width: $max){
+        @content;
+    }
+}
+
+@mixin desktop-and-tv($min: map-get($breakpoints, tablette) + 1) {
+    @media screen and (min-width: $min){
+        @content;
+    }
+}
+
+/***/
+
+
+@mixin to-desktop($max: map-get($max, desktop)) {
+    @media screen and (max-width: $max){
+        @content;
+    }
+}
+
+@mixin from-tablette($min: map-get($breakpoints, mobile) + 1) {
+    @media screen and (min-width: $min){
+        @content;
+    }
+}
+
+
+div.support{
+    background:blue;
+    @include desktop-only{
+        background:red;
+    }
+}

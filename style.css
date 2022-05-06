@@ -1,0 +1,18 @@
+div.btn:hover {
+  border: 1rem solid gray;
+  background-color: green;
+  color: gray;
+}
+
+/*****/
+/***/
+div.support {
+  background: blue;
+}
+@media screen and (min-width: 1000px) and (max-width: 1199px) {
+  div.support {
+    background: red;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
